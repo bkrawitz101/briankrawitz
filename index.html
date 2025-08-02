@@ -22,6 +22,8 @@
             color: var(--white);
             line-height: 1.6;
             scroll-behavior: smooth;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .container {
@@ -45,7 +47,7 @@
             margin-top: 1rem;
             margin-bottom: 2rem;
         }
-
+        
         .section-title {
             font-family: 'Montserrat', sans-serif;
             letter-spacing: 0.2em;
@@ -58,22 +60,22 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--white);
+            transition: width 0.3s ease;
+        }
 
-            .nav-link::after {
-                content: '';
-                position: absolute;
-                bottom: -5px;
-                left: 0;
-                width: 0;
-                height: 1px;
-                background-color: var(--white);
-                transition: width 0.3s ease;
-            }
-
-            .nav-link.active::after,
-            .nav-link:hover::after {
-                width: 100%;
-            }
+        .nav-link.active::after,
+        .nav-link:hover::after {
+            width: 100%;
+        }
 
         .project-item {
             border: 1px solid var(--line-color);
@@ -84,35 +86,22 @@
             padding: 1.5rem;
         }
 
-            .project-item:hover {
-                background-color: var(--dark-gray);
-            }
+        .project-item:hover {
+            background-color: var(--dark-gray);
+        }
 
         .project-details-container {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.5s ease-in-out;
-            background-color: #1a1a1a;
             padding: 0;
         }
 
-            .project-details-container.active {
-                max-height: 1000px; /* A value large enough to accommodate the content */
-                padding: 1rem;
-            }
-
-        .project-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
+        .project-details-container.active {
+            max-height: 1000px; /* A value large enough to accommodate the content */
+            padding-top: 1rem;
         }
-
-        .project-item:hover .project-image {
-            opacity: 1;
-        }
-
+        
         .category-link {
             border: 1px solid var(--line-color);
             border-radius: 5px;
@@ -125,37 +114,34 @@
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
-            .category-link:hover {
-                background-color: var(--dark-gray);
-                transform: translateY(-5px);
-            }
+        .category-link:hover {
+            background-color: var(--dark-gray);
+            transform: translateY(-5px);
+        }
 
         /* Scrollbar styling for a clean look */
         ::-webkit-scrollbar {
             width: 8px;
         }
-
         ::-webkit-scrollbar-track {
             background: #000;
         }
-
         ::-webkit-scrollbar-thumb {
             background: var(--line-color);
             border-radius: 10px;
         }
-
-            ::-webkit-scrollbar-thumb:hover {
-                background: #555;
-            }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
 
         /* Page-specific classes */
         .page-content {
             display: none;
         }
 
-            .page-content.active {
-                display: block;
-            }
+        .page-content.active {
+            display: block;
+        }
     </style>
 </head>
 <body class="bg-black text-white">
@@ -179,7 +165,7 @@
             <a href="#contact" class="nav-link">CONTACT</a>
         </div>
     </nav>
-
+    
     <!-- Main Content -->
     <main class="container py-16">
 
@@ -340,7 +326,7 @@
                 </div>
             </div>
         </section>
-
+        
         <!-- Portfolio Main Page -->
         <section id="portfolio-main" class="page-content py-16">
             <h2 class="text-2xl section-title text-center">Portfolio</h2>
@@ -358,7 +344,7 @@
         <section id="creative-solo-digital" class="page-content py-16">
             <h2 class="text-2xl section-title text-center">Solo Digital Medium</h2>
             <div class="section-line"></div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="space-y-6">
                 <!-- Unity Sanctuary -->
                 <div class="project-item">
                     <p class="text-lg font-light project-title text-center">Unity Sanctuary</p>
@@ -394,7 +380,7 @@
         <section id="creative-solo-sculpture" class="page-content py-16">
             <h2 class="text-2xl section-title text-center">Solo Mixed-Medium Sculpture</h2>
             <div class="section-line"></div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="space-y-6">
                 <!-- Life Within Itself -->
                 <div class="project-item">
                     <p class="text-lg font-light project-title text-center">Life Within Itself</p>
@@ -429,7 +415,7 @@
         <section id="creative-collab-digital" class="page-content py-16">
             <h2 class="text-2xl section-title text-center">Collaborative Digital Medium</h2>
             <div class="section-line"></div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="space-y-6">
                 <!-- Heartland VR -->
                 <div class="project-item">
                     <p class="text-lg font-light project-title text-center">Heartland VR</p>
@@ -466,7 +452,7 @@
         <section id="creative-collab-sculpture" class="page-content py-16">
             <h2 class="text-2xl section-title text-center">Collaborative Mixed-Medium Sculpture</h2>
             <div class="section-line"></div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="space-y-6">
                 <!-- Mens Amplio -->
                 <div class="project-item">
                     <p class="text-lg font-light project-title text-center">Mens Amplio</p>
@@ -550,7 +536,7 @@
                     <p class="text-sm text-gray-400 font-light">TEFL Level 5 180-Hour Online Certificate</p>
                 </div>
             </div>
-
+            
             <!-- Education details -->
             <div class="mt-8 space-y-6">
                 <!-- Design Science Studio details -->
@@ -573,7 +559,7 @@
                 </div>
             </div>
         </section>
-
+        
     </main>
 
     <!-- Footer with Contact Info -->
@@ -590,19 +576,20 @@
         </div>
     </footer>
 
-    <script>document.addEventListener('DOMContentLoaded', () => {
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
             const navLinks = document.querySelectorAll('.nav-link');
             const pageContents = document.querySelectorAll('.page-content');
-
+            
             function showPage(pageId) {
                 pageContents.forEach(page => {
                     page.classList.remove('active');
                 });
-
+                
                 const targetPage = document.querySelector(pageId);
                 if (targetPage) {
                     targetPage.classList.add('active');
-                    window.scrollTo(0, 0);
+                    window.scrollTo(0, 0); 
                 }
 
                 navLinks.forEach(link => {
@@ -629,23 +616,24 @@
 
             const projectItems = document.querySelectorAll('.project-item');
             projectItems.forEach(item => {
-                const titleContainer = item.querySelector('.project-title');
-                const detailsContainer = item.querySelector('.project-details-container');
+                item.addEventListener('click', (e) => {
+                    const detailsContainer = item.querySelector('.project-details-container');
+                    if (!detailsContainer) return;
 
-                titleContainer.addEventListener('click', (e) => {
-                    e.stopPropagation();
                     const allDetails = document.querySelectorAll('.project-details-container.active');
                     allDetails.forEach(detail => {
                         if (detail !== detailsContainer) {
                             detail.classList.remove('active');
                         }
                     });
+
                     detailsContainer.classList.toggle('active');
                 });
             });
 
             const initialPageId = window.location.hash || '#about';
             showPage(initialPageId);
-        });</script>
+        });
+    </script>
 </body>
 </html>
