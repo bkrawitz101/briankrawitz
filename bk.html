@@ -1,0 +1,651 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brian Krawitz - Imagineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --light-gray: #B0B0B0;
+            --white: #F0F0F0;
+            --dark-gray: #1a1a1a;
+            --line-color: #333;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            color: var(--white);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Sci-fi/Art Deco specific styling */
+        .header-line {
+            height: 1px;
+            background-color: var(--line-color);
+            margin: 1.5rem 0;
+            opacity: 0.8;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+        }
+
+        .section-line {
+            height: 1px;
+            background-color: var(--line-color);
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 200;
+        }
+
+        .nav-link {
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                width: 0;
+                height: 1px;
+                background-color: var(--white);
+                transition: width 0.3s ease;
+            }
+
+            .nav-link.active::after,
+            .nav-link:hover::after {
+                width: 100%;
+            }
+
+        .project-item {
+            border: 1px solid var(--line-color);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            padding: 1.5rem;
+        }
+
+            .project-item:hover {
+                background-color: var(--dark-gray);
+            }
+
+        .project-details-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+            background-color: #1a1a1a;
+            padding: 0;
+        }
+
+            .project-details-container.active {
+                max-height: 1000px; /* A value large enough to accommodate the content */
+                padding: 1rem;
+            }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-item:hover .project-image {
+            opacity: 1;
+        }
+
+        .category-link {
+            border: 1px solid var(--line-color);
+            border-radius: 5px;
+            padding: 2rem 1rem;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 200;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+            .category-link:hover {
+                background-color: var(--dark-gray);
+                transform: translateY(-5px);
+            }
+
+        /* Scrollbar styling for a clean look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--line-color);
+            border-radius: 10px;
+        }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
+
+        /* Page-specific classes */
+        .page-content {
+            display: none;
+        }
+
+            .page-content.active {
+                display: block;
+            }
+    </style>
+</head>
+<body class="bg-black text-white">
+
+    <!-- Header Section -->
+    <header class="py-10">
+        <div class="container">
+            <h1 class="text-3xl sm:text-5xl font-thin font-['Montserrat'] tracking-[0.2em] text-center uppercase animate-fade-in-down">BRIAN KRAWITZ</h1>
+            <p class="text-sm sm:text-base text-center mt-2 tracking-wide text-gray-400 animate-fade-in-up font-light">Imagineer | Community Instigator | MetaConnector <br> Transmedia Visionary | Transformational Futurist | Creative Technology Evangelist</p>
+            <div class="header-line animate-fade-in"></div>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="sticky top-0 z-50 bg-black/70 backdrop-blur-sm py-4">
+        <div class="container flex justify-center space-x-6 sm:space-x-12 text-sm sm:text-base font-['Montserrat'] tracking-widest text-gray-400">
+            <a href="#about" class="nav-link">ABOUT</a>
+            <a href="#experience" class="nav-link">EXPERIENCE</a>
+            <a href="#portfolio-main" class="nav-link">PORTFOLIO</a>
+            <a href="#education" class="nav-link">EDUCATION</a>
+            <a href="#contact" class="nav-link">CONTACT</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container py-16">
+
+        <!-- About Section -->
+        <section id="about" class="page-content py-16">
+            <h2 class="text-2xl section-title text-center">About</h2>
+            <div class="section-line"></div>
+            <p class="text-gray-300 max-w-2xl mx-auto text-center font-light leading-relaxed">
+                Once unlocked, the power of imagination can manifest anything. I have taken my life's worth of multidisciplinary experience and woven it into who I am now, an Imagineer, Community Instigator, Poetic Philosopher, Meta-Connector and Creative Technology. My noble purpose as defined by who I am and why I am here is to bridge the gap between imagination and reality, within the physical and virtual worlds. I see things from a unique viewpoint, which enables me to start with a dream and help unlock its potential. I look forward to joining you on your journey...
+            </p>
+        </section>
+
+        <!-- Professional Experience Section -->
+        <section id="experience" class="page-content py-16">
+            <h2 class="text-2xl section-title text-center">Professional Experience</h2>
+            <div class="section-line"></div>
+            <div class="space-y-10">
+                <!-- P.e.a.c.e Ing -->
+                <div class="border border-gray-800 p-6 rounded-lg hover:border-gray-600 transition-colors">
+                    <p class="text-xl font-light">Creative Co-director</p>
+                    <p class="text-sm text-gray-400"><a href="https://example.com/peace-ing" target="_blank" class="text-gray-400 hover:text-white">P.e.a.c.e Ing (People Evolve as Consciousness Expands)</a> | Hybrid | Jun 2025-Present</p>
+                    <ul class="list-disc list-inside mt-4 text-gray-300 space-y-1 font-light">
+                        <li>Co-director of creative initiatives, curating immersive "Experibitions" that merge art with formalized consciousness studies, integrating science and experiential design.</li>
+                    </ul>
+                </div>
+                <!-- H.A.L.O. Qi -->
+                <div class="border border-gray-800 p-6 rounded-lg hover:border-gray-600 transition-colors">
+                    <p class="text-xl font-light">Creative Technology Evangelist</p>
+                    <p class="text-sm text-gray-400"><a href="https://example.com/halo-qi" target="_blank" class="text-gray-400 hover:text-white">H.A.L.O. Qi (Hyperqube Algorithmic Language Oracle)</a> | Hybrid | Jun 2025 - Present</p>
+                    <ul class="list-disc list-inside mt-4 text-gray-300 space-y-1 font-light">
+                        <li>Collaborate with principal scientific investigator to develop data visualization tools for hyper-dimensional computations in a neuromorphic quantum computing environment.</li>
+                        <li>Support global outreach and creative presentation of hyper-dimensional Al research, bridging artists, scientists, and technologists in participatory consciousness experiments.</li>
+                        <li>Identify and cultivate partnerships with projects aligned to the United Nations Sustainable Development Goals (UN SDGs), expanding the network of regenerative and socially impactful initiatives.</li>
+                    </ul>
+                </div>
+                <!-- AVN -->
+                <div class="border border-gray-800 p-6 rounded-lg hover:border-gray-600 transition-colors">
+                    <p class="text-xl font-light">Creative Technology Evangelist | Community Instigator</p>
+                    <p class="text-sm text-gray-400">AVN (Agriculture Value-Chain Network) | Remote | Nov 2024 - Present</p>
+                    <ul class="list-disc list-inside mt-4 text-gray-300 space-y-1 font-light">
+                        <li>Community Development & Engagement: Cultivating grassroots initiatives and forging strong networks within farmer cooperatives, agribusinesses, and sustainability-driven communities to co-develop regenerative solutions.</li>
+                        <li>Innovative Communication & Collaboration: Leveraging unique storytelling and transmedia strategies to align diverse stakeholders, ensuring seamless integration of technology and sustainable practices.</li>
+                        <li>Technology Integration & Open-Source Ideation: Advising the core technology team to co-create and implement open-source tools that enhance agricultural systems, optimize waste stream upcycling, and strengthen cooperative ecosystems.</li>
+                        <li>Hands-On Implementation & Fieldwork: Serving as a boots-on-the-ground leader in the Sacramento area, actively developing and deploying community-driven solutions that translate regenerative concepts into tangible impact.</li>
+                        <li>Sustainability & Circular Economy Innovation: Co-creating ecosystems for waste stream upcycling and supporting cooperative models that promote regenerative practices, resource efficiency, and community empowerment.</li>
+                    </ul>
+                </div>
+                <!-- IDA -->
+                <div class="border border-gray-800 p-6 rounded-lg hover:border-gray-600 transition-colors">
+                    <p class="text-xl font-light">Advisory Board Member, Creative Technology Evangelist</p>
+                    <p class="text-sm text-gray-400">IDA (Invictus Development Africa) | Remote | Nov 2024 - May 2025</p>
+                    <ul class="list-disc list-inside mt-4 text-gray-300 space-y-1 font-light">
+                        <li>Provide strategic guidance as Creative Technology Evangelist to drive IDA's mission of empowering communities through regenerative agriculture, renewable energy, and technology-driven livelihoods.</li>
+                        <li>Advise on the integration of cutting-edge technologies such as blockchain and AI to enhance transparency, efficiency, and social impact across sustainable ventures.</li>
+                        <li>Support the development and scaling of circular economic models and resource management initiatives to foster environmental stewardship.</li>
+                        <li>Collaborate with global stakeholders, including investors, NGOs, and development agencies, to promote scalable, equitable, and sustainable ecosystems.</li>
+                        <li>Contribute expertise to training and capacity-building programs, focusing on skills development, digital literacy, and entrepreneurship for marginalized communities.</li>
+                    </ul>
+                </div>
+                <!-- APCCC -->
+                <div class="border border-gray-800 p-6 rounded-lg hover:border-gray-600 transition-colors">
+                    <p class="text-xl font-light">Creative Technology Evangelist</p>
+                    <p class="text-sm text-gray-400">APCCC (Africa Partnership On Climate Control Coalition) | Remote | Jun 2024 - Present</p>
+                    <ul class="list-disc list-inside mt-4 text-gray-300 space-y-1 font-light">
+                        <li>Champion world-building as a tool for collaborative eco-village design, transforming visionary concepts into sustainable living spaces.</li>
+                        <li>Lead development of Edward's Hamlet Regenerative Agriculture Education Center, utilizing VR for community visualization and co-creation.</li>
+                        <li>Foster collaboration through immersive workshops and design sessions, blending creative imagination with practical, sustainable development.</li>
+                        <li>Harness VR and emerging technologies to help communities visualize and create sustainable futures.</li>
+                        <li>Bridge technology with community-driven solutions, empowering people to co-create eco-villages reflecting traditional values and modern innovations.</li>
+                        <li>Engage diverse stakeholders to bring cutting-edge solutions to rural communities, enabling participatory community building.</li>
+                        <li>Lead workshops teaching community members to utilize technology for empowerment and active participation in shaping living environments.</li>
+                        <li>Promote innovation through digital storytelling, VR environments, and interactive design, fostering community ownership and pride.</li>
+                    </ul>
+                </div>
+                <!-- Heartland Collective -->
+                <div class="border border-gray-800 p-6 rounded-lg hover:border-gray-600 transition-colors">
+                    <p class="text-xl font-light">Creative Technology Evangelist</p>
+                    <p class="text-sm text-gray-400">Heartland Collective | Wheatland, CA | Jan 2023 - Present</p>
+                    <ul class="list-disc list-inside mt-4 text-gray-300 space-y-1 font-light">
+                        <li>Research new ways of sustainable and regenerative living for working implementation.</li>
+                        <li>Key in design and implementation digital twin.</li>
+                        <li>Lead in creative mentorship, including helping one find their purpose.</li>
+                        <li>General fixer and maintenance of infrastructure workings.</li>
+                    </ul>
+                </div>
+                <!-- XR Associates -->
+                <div class="border border-gray-800 p-6 rounded-lg hover:border-gray-600 transition-colors">
+                    <p class="text-xl font-light">Vice President USA Committee</p>
+                    <p class="text-sm text-gray-400">XR Associates | Global | Aug 2021 - Present</p>
+                    <ul class="list-disc list-inside mt-4 text-gray-300 space-y-1 font-light">
+                        <li>Creating business opportunities that support the XR (AR/VR/MR) ecosystem.</li>
+                    </ul>
+                </div>
+                <!-- [en]lightening concepts -->
+                <div class="border border-gray-800 p-6 rounded-lg hover:border-gray-600 transition-colors">
+                    <p class="text-xl font-light">Founder/Consultant</p>
+                    <p class="text-sm text-gray-400"><a href="https://example.com/enlightening-concepts" target="_blank" class="text-gray-400 hover:text-white">[en]lightening concepts</a> | Global | Jan 2010 - Present</p>
+                    <ul class="list-disc list-inside mt-4 text-gray-300 space-y-1 font-light">
+                        <li>Forward thinking creative concept, design and technology consulting, geared towards unique experience inspired by artistic expression.</li>
+                        <li>Ideation and implementation of complex interactive, immersive environments and infrastructure, as per portfolio.</li>
+                    </ul>
+                </div>
+                <!-- Event Production Local 16 -->
+                <div class="border border-gray-800 p-6 rounded-lg hover:border-gray-600 transition-colors">
+                    <p class="text-xl font-light">Event Production</p>
+                    <p class="text-sm text-gray-400">Local 16 | San Francisco, CA | Nov 2019 - Present</p>
+                    <ul class="list-disc list-inside mt-4 text-gray-300 space-y-1 font-light">
+                        <li>Performed audio/visual set up and breakdown for SF Bay Area trade shows and conventions.</li>
+                        <li>Support one-off events as Webcast Streaming engineer.</li>
+                        <li>Works as audio operator including Al and A2 on roster.</li>
+                        <li>Serves as Video Utility for \$100M + large event configurations.</li>
+                    </ul>
+                </div>
+                <!-- Senior Signal Acquisitions Engineer -->
+                <div class="border border-gray-800 p-6 rounded-lg hover:border-gray-600 transition-colors">
+                    <p class="text-xl font-light">Senior Signal Acquisitions Engineer</p>
+                    <p class="text-sm text-gray-400">ON24 | San Francisco, CA | Jul 2011 - Sept 2017</p>
+                    <ul class="list-disc list-inside mt-4 text-gray-300 space-y-1 font-light">
+                        <li>Led complex end client setups various media environments.</li>
+                        <li>Configured complex client webcasts workflows.</li>
+                        <li>Setup and configuration of broadcast quality webcasting infrastructure.</li>
+                        <li>Served as full client support on all webcasting issues, including off hour on-call 24x5 client-side support.</li>
+                        <li>Coproduced the design and functionality on one remote office and 2 remote data centers.</li>
+                    </ul>
+                </div>
+                <!-- Manager, Broadcast Engineering -->
+                <div class="border border-gray-800 p-6 rounded-lg hover:border-gray-600 transition-colors">
+                    <p class="text-xl font-light">Manager, Broadcast Engineering</p>
+                    <p class="text-sm text-gray-400">Current TV | San Francisco, CA | Apr 2006 - Feb 2010</p>
+                    <ul class="list-disc list-inside mt-4 text-gray-300 space-y-1 font-light">
+                        <li>Collaborated on the launch of the first international TV Station, an Al Gore initiative.</li>
+                        <li>Managed the first 8 months of the onsite technical department start-up operations in London, UK.</li>
+                        <li>Served as On-Air support for Master Control, supporting 3 separate channels, including UK and Italy.</li>
+                        <li>Maintained broadcast workflow and servers in both Windows and Mac OS.</li>
+                        <li>Supported multiple baseband and digital video formats with the Ingest department.</li>
+                        <li>Undertook Engineer-in-Charge duties for multi-country live simulcast production.</li>
+                        <li>Teamed up with the Research and Development department to launch the Twitter and live TV integration.</li>
+                        <li>Administered support for all company multi-media conference rooms.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Prior Work Experience Section -->
+            <h3 class="text-2xl section-title mt-10 text-center">Prior Work Experience</h3>
+            <div class="section-line"></div>
+            <div class="space-y-4">
+                <div class="border border-gray-800 p-6 rounded-lg hover:border-gray-600 transition-colors">
+                    <p class="text-xl font-light">Supervisor, Broadcast Video on Demand/Quality Control</p>
+                    <p class="text-sm text-gray-400">Larry Flynt Publications, Los Angeles, CA</p>
+                </div>
+                <div class="border border-gray-800 p-6 rounded-lg hover:border-gray-600 transition-colors">
+                    <p class="text-xl font-light">Tape Operations / Transmissions</p>
+                    <p class="text-sm text-gray-400">E! Networks, Los Angeles, CA</p>
+                </div>
+                <div class="border border-gray-800 p-6 rounded-lg hover:border-gray-600 transition-colors">
+                    <p class="text-xl font-light">Television Operator</p>
+                    <p class="text-sm text-gray-400">Bloomberg LP, New York, NY</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Main Page -->
+        <section id="portfolio-main" class="page-content py-16">
+            <h2 class="text-2xl section-title text-center">Portfolio</h2>
+            <div class="section-line"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <a href="#creative-solo-digital" class="category-link">Solo Digital Medium</a>
+                <a href="#creative-solo-sculpture" class="category-link">Solo Mixed-Medium Sculpture</a>
+                <a href="#creative-collab-digital" class="category-link">Collaborative Digital Medium</a>
+                <a href="#creative-collab-sculpture" class="category-link">Collaborative Mixed-Medium Sculpture</a>
+            </div>
+        </section>
+
+        <!-- Portfolio Sub-pages -->
+        <!-- Solo Digital Medium Page -->
+        <section id="creative-solo-digital" class="page-content py-16">
+            <h2 class="text-2xl section-title text-center">Solo Digital Medium</h2>
+            <div class="section-line"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Unity Sanctuary -->
+                <div class="project-item">
+                    <p class="text-lg font-light project-title text-center">Unity Sanctuary</p>
+                    <div class="project-details-container">
+                        <div class="project-description">
+                            <p class="text-sm text-gray-400 font-light">An immersive virtual reality experience, based in Altspace, inspired by habitable lantern style yurts. <a href="https://example.com/unity-trailer" target="_blank" class="text-gray-400 hover:text-white">Trailer</a> available.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- The Connected Experience -->
+                <div class="project-item">
+                    <p class="text-lg font-light project-title text-center">The Connected Experience</p>
+                    <div class="project-details-container">
+                        <div class="project-description">
+                            <p class="text-sm text-gray-400 font-light">An immersive and interactive virtual reality experience, based in Altspace, inspired through connecting community through artistic expression and bio-feedback. <a href="https://example.com/piano-demo" target="_blank" class="text-gray-400 hover:text-white">Piano Demo Trailer</a> available.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Virtual Reality TESOL environments -->
+                <div class="project-item">
+                    <p class="text-lg font-light project-title text-center">Virtual Reality TESOL environments</p>
+                    <div class="project-details-container">
+                        <div class="project-description">
+                            <p class="text-sm text-gray-400 font-light">An immersive and interactive virtual reality experience, based in Altspace, designed for a more modern day example of education 2.0 using existing 3rd party designed 3D assets and integrating for proof of concept.</p>
+                            <p class="text-xs text-gray-500 mt-2">References: <a href="https://example.com/tina-liu" target="_blank" class="text-gray-500 hover:text-white">Tina Liu's UCLA TESOL course Lesson Plans</a>, <a href="https://example.com/tefl-plan" target="_blank" class="text-gray-500 hover:text-white">My i-to-i TEFL online certificate lesson plan</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solo Mixed-Medium Sculpture Page -->
+        <section id="creative-solo-sculpture" class="page-content py-16">
+            <h2 class="text-2xl section-title text-center">Solo Mixed-Medium Sculpture</h2>
+            <div class="section-line"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Life Within Itself -->
+                <div class="project-item">
+                    <p class="text-lg font-light project-title text-center">Life Within Itself</p>
+                    <div class="project-details-container">
+                        <div class="project-description">
+                            <p class="text-sm text-gray-400 font-light">Mixed medium brass, wood and frosted acrylic lighting sculpture, designed in Fusion360, inspired by sacred geometry.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- The Fountain of Pon Lai -->
+                <div class="project-item">
+                    <p class="text-lg font-light project-title text-center">The Fountain of Pon Lai</p>
+                    <div class="project-details-container">
+                        <div class="project-description">
+                            <p class="text-sm text-gray-400 font-light">Mixed medium frosted acrylic and interactive cognitive lighting sculpture, designed in Fusion 360, first created for the Cognitive Technologies exhibit at the San Francisco Exploratorium.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Kryptonicity -->
+                <div class="project-item">
+                    <p class="text-lg font-light project-title text-center">Kryptonicity</p>
+                    <div class="project-details-container">
+                        <div class="project-description">
+                            <p class="text-sm text-gray-400 font-light">Mixed medium frosted acrylic, metal and lighting sculpture inspired by 1970's science fiction aesthetic and art deco bringing together form and function.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Collaborative Digital Medium Page -->
+        <section id="creative-collab-digital" class="page-content py-16">
+            <h2 class="text-2xl section-title text-center">Collaborative Digital Medium</h2>
+            <div class="section-line"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Heartland VR -->
+                <div class="project-item">
+                    <p class="text-lg font-light project-title text-center">Heartland VR</p>
+                    <div class="project-details-container">
+                        <div class="project-description">
+                            <p class="text-sm text-gray-400 font-light">Immersive and interactive virtual reality experience, based in Spatial, inspired by connecting and educating communities in sustainable and regenerative practices.</p>
+                            <ul class="list-disc list-inside mt-2 text-gray-300 space-y-1 font-light">
+                                <li>Lead Unity Developer, including layout and programing.</li>
+                                <li>Assisted in 3D modeling, including editing in Fusion 360 and Blender.</li>
+                                <li>Education ideation and integration within virtual space.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- White Mirror -->
+                <div class="project-item">
+                    <p class="text-lg font-light project-title text-center">White Mirror</p>
+                    <div class="project-details-container">
+                        <div class="project-description">
+                            <p class="text-sm text-gray-400 font-light">Immersive and interactive virtual reality experience, previously based in Altspace, inspired by connecting community through artistic expression and biofeedback. <a href="https://example.com/white-mirror-trailer" target="_blank" class="text-gray-400 hover:text-white">VR Trailer</a>.</p>
+                            <ul class="list-disc list-inside mt-2 text-gray-300 space-y-1 font-light">
+                                <li>Ideated and concept design of immersive floating islands in space.</li>
+                                <li>3D modeling of sacred geometry, including editing in Fusion 360 and Blender.</li>
+                                <li>Universe environment layout and interaction for Altspace, built within Unity game engine.</li>
+                                <li>Storyline and superhero character development.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Collaborative Mixed-Medium Sculpture Page -->
+        <section id="creative-collab-sculpture" class="page-content py-16">
+            <h2 class="text-2xl section-title text-center">Collaborative Mixed-Medium Sculpture</h2>
+            <div class="section-line"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Mens Amplio -->
+                <div class="project-item">
+                    <p class="text-lg font-light project-title text-center">Mens Amplio</p>
+                    <div class="project-details-container">
+                        <div class="project-description">
+                            <p class="text-sm text-gray-400 font-light">Mixed medium acrylic, metal, fire and interactive cognitive lightning sculpture, created for Burning Man.</p>
+                            <ul class="list-disc list-inside mt-2 text-gray-300 space-y-1 font-light">
+                                <li>Ideated and designed custom lighting sculpture inspired by brain neurons and axons.</li>
+                                <li>Developed core concept of lighting sequence to give the feel of brain activity.</li>
+                                <li>Led a team of 10 volunteers to build over 200 lighting fixtures.</li>
+                                <li>Served as build lead for final assembly on playa.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Zoa -->
+                <div class="project-item">
+                    <p class="text-lg font-light project-title text-center">Zoa</p>
+                    <div class="project-details-container">
+                        <div class="project-description">
+                            <p class="text-sm text-gray-400 font-light">Mixed medium wood, and interactive lighting sculpture.</p>
+                            <ul class="list-disc list-inside mt-2 text-gray-300 space-y-1 font-light">
+                                <li>Designed custom lighting fixtures for both phases of Zoa, inspired by sea creatures.</li>
+                                <li>Assisted with concept of lighting sequence to give the feel of organic breath in the sculpture.</li>
+                                <li>Led a team of 10 volunteers to build over 100 lighting fixtures.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Brollyflock -->
+                <div class="project-item">
+                    <p class="text-lg font-light project-title text-center">Brollyflock</p>
+                    <div class="project-details-container">
+                        <div class="project-description">
+                            <p class="text-sm text-gray-400 font-light">Mixed medium steel, LEDs, fire and nylon interactive umbrella-like sculpture.</p>
+                            <ul class="list-disc list-inside mt-2 text-gray-300 space-y-1 font-light">
+                                <li>Key in design of the 'jig' or form to build all of the metal fixtures.</li>
+                                <li>Managed general shop/warehouse logistics, including inventory, floor layouts and use of forklift.</li>
+                                <li>Served as an onsite advisor in the final assembly.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Temple of Flux -->
+                <div class="project-item">
+                    <p class="text-lg font-light project-title text-center">Temple of Flux</p>
+                    <div class="project-details-container">
+                        <div class="project-description">
+                            <p class="text-sm text-gray-400 font-light">Wood and lighting sculpture.</p>
+                            <ul class="list-disc list-inside mt-2 text-gray-300 space-y-1 font-light">
+                                <li>Worked with a team of artists to design the outside surface for a 21,000 square foot sculpture.</li>
+                                <li>Developed a process to produce modular sections for this project called 'thatches'.</li>
+                                <li>Led a team of 30+ volunteers to build over 700 thatches.</li>
+                                <li>Managed general shop/warehouse logistics, including inventory, floor layouts and use of forklift.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="page-content py-16">
+            <h2 class="text-2xl section-title text-center">Education</h2>
+            <div class="section-line"></div>
+            <div class="space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+                    <p class="text-xl font-light">Design Science Studio</p>
+                    <p class="text-sm text-gray-400 font-light">Cohort Member | Sept 2021 - Apr 2022</p>
+                </div>
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+                    <p class="text-xl font-light">Oculus Launchpad</p>
+                    <p class="text-sm text-gray-400 font-light">Cohort Member | Aug 2021 - Apr 2022</p>
+                </div>
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+                    <p class="text-xl font-light">Rockland Community College, New York</p>
+                    <p class="text-sm text-gray-400 font-light">Associate of the Arts, Liberal Arts and Sciences, Broadcast Television</p>
+                </div>
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+                    <p class="text-xl font-light">i-to-i, Online</p>
+                    <p class="text-sm text-gray-400 font-light">TEFL Level 5 180-Hour Online Certificate</p>
+                </div>
+            </div>
+
+            <!-- Education details -->
+            <div class="mt-8 space-y-6">
+                <!-- Design Science Studio details -->
+                <div class="border border-gray-800 p-6 rounded-lg hover:border-gray-600 transition-colors">
+                    <p class="text-lg font-light">Design Science Studio</p>
+                    <p class="text-sm text-gray-400 font-light">Sept 2021 - Apr 2022</p>
+                    <div class="mt-4 text-sm text-gray-300 font-light space-y-2">
+                        <p>The Design Science Studio is an educational incubator for art created by the Buckminster Fuller Institute and habRitual, that scaffolds, mentors and funds artists to inspire and propel us into a regenerative future. The program takes artists on a learning journey through a mind bending curriculum to produce planet-conscious art.</p>
+                        <p>Following the ideas of visionaries like Buckminster Fuller and many modern system thinkers, philosophers, activists, scientists and visionary polymaths, we help artists create content that can create cultural shifts.</p>
+                        <p>The program culminates in a series of digital and physical showcases and large scale campaigns to imagine and facilitate the transition to a future where all beings thrive through celebration and art.</p>
+                    </div>
+                </div>
+                <!-- Oculus Launchpad details -->
+                <div class="border border-gray-800 p-6 rounded-lg hover:border-gray-600 transition-colors">
+                    <p class="text-lg font-light">Oculus Launchpad</p>
+                    <p class="text-sm text-gray-400 font-light">Aug 2021 - Apr 2022</p>
+                    <div class="mt-4 text-sm text-gray-300 font-light">
+                        <p>Each year, the Launchpad program helps up to 100 professionals grow as emerging leaders in the field. Those selected to participate receive hardware support and admission to our kickoff Boot Camp event. This event is designed to build and foster your understanding and passion for VR development through hands-on training with industry leaders.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer with Contact Info -->
+    <footer id="contact" class="page-content py-16">
+        <div class="container">
+            <h2 class="text-2xl section-title text-center">Contact</h2>
+            <div class="header-line"></div>
+            <div class="text-center text-gray-400 text-sm mt-6 space-y-1">
+                <p class="font-light">Email: <a href="mailto:bkrawitz@gmail.com" class="nav-link">bkrawitz@gmail.com</a></p>
+                <p class="font-light">Phone: <a href="tel:+15107591982" class="nav-link">(510) 759-1982</a></p>
+                <p class="font-light">LinkedIn: <a href="https://www.linkedin.com/in/brian-krawitz" target="_blank" class="nav-link">Brian Krawitz</a></p>
+                <p class="mt-4 font-light">&copy; 2025 Brian Krawitz. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pageContents = document.querySelectorAll('.page-content');
+
+            function showPage(pageId) {
+                pageContents.forEach(page => {
+                    page.classList.remove('active');
+                });
+
+                const targetPage = document.querySelector(pageId);
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                    window.scrollTo(0, 0);
+                }
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === pageId || (pageId.startsWith('#creative-') && link.getAttribute('href') === '#portfolio-main')) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageId = e.target.getAttribute('href');
+                    history.pushState(null, '', pageId);
+                    showPage(pageId);
+                });
+            });
+
+            window.addEventListener('popstate', () => {
+                const pageId = window.location.hash || '#about';
+                showPage(pageId);
+            });
+
+            const projectItems = document.querySelectorAll('.project-item');
+            projectItems.forEach(item => {
+                const titleContainer = item.querySelector('.project-title');
+                const detailsContainer = item.querySelector('.project-details-container');
+
+                titleContainer.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const allDetails = document.querySelectorAll('.project-details-container.active');
+                    allDetails.forEach(detail => {
+                        if (detail !== detailsContainer) {
+                            detail.classList.remove('active');
+                        }
+                    });
+                    detailsContainer.classList.toggle('active');
+                });
+            });
+
+            const initialPageId = window.location.hash || '#about';
+            showPage(initialPageId);
+        });</script>
+</body>
+</html>
