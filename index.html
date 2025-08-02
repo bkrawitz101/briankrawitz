@@ -299,18 +299,6 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .art-deco-title {
-                font-size: 2rem;
-                letter-spacing: 0.2em;
-            }
-            
-            .category-link {
-                padding: 2rem 1rem;
-                font-size: 0.9rem;
-            }
-        }
-
         /* Enhanced Responsive Design */
         /* Mobile First Approach */
         
@@ -330,6 +318,85 @@
             .art-deco-subtitle {
                 font-size: 0.875rem;
                 line-height: 1.4;
+            }
+            
+            /* Mobile Navigation - Much Better */
+            nav {
+                padding: 0.5rem 0;
+                position: relative;
+            }
+            
+            nav .container {
+                flex-direction: column;
+                gap: 0;
+                position: relative;
+            }
+            
+            /* Mobile Menu Toggle */
+            .mobile-menu-toggle {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                background: none;
+                border: none;
+                color: var(--art-deco-silver);
+                font-size: 1.5rem;
+                cursor: pointer;
+                z-index: 1000;
+                padding: 0.5rem;
+                transition: color 0.3s ease;
+            }
+            
+            .mobile-menu-toggle:hover {
+                color: var(--art-deco-gold);
+            }
+            
+            .mobile-menu-toggle.active {
+                color: var(--art-deco-gold);
+            }
+            
+            /* Mobile Menu Container */
+            .mobile-menu {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(10px);
+                z-index: 999;
+                padding: 4rem 2rem 2rem;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+            }
+            
+            .mobile-menu.active {
+                display: flex;
+            }
+            
+            .mobile-menu .nav-link {
+                font-size: 1.5rem;
+                letter-spacing: 0.2em;
+                padding: 1rem 0;
+                text-align: center;
+                width: 100%;
+                border-bottom: 1px solid transparent;
+                transition: all 0.3s ease;
+            }
+            
+            .mobile-menu .nav-link:hover,
+            .mobile-menu .nav-link.active {
+                border-bottom: 1px solid var(--art-deco-gold);
+                color: var(--art-deco-gold);
+            }
+            
+            /* Hide desktop nav on mobile */
+            .desktop-nav {
+                display: none;
             }
             
             .nav-link {
@@ -361,21 +428,6 @@
             
             .art-deco-line {
                 margin: 1.5rem 0;
-            }
-            
-            /* Mobile Navigation */
-            nav {
-                padding: 1rem 0;
-            }
-            
-            nav .container {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            
-            nav .container a {
-                padding: 0.5rem 0;
-                font-size: 0.875rem;
             }
             
             /* Mobile Touch Improvements */
@@ -429,6 +481,19 @@
             
             .art-deco-subtitle {
                 font-size: 1rem;
+            }
+            
+            /* Show desktop nav, hide mobile */
+            .mobile-menu-toggle {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: none !important;
+            }
+            
+            .desktop-nav {
+                display: flex;
             }
             
             .nav-link {
@@ -638,6 +703,15 @@
             .container {
                 padding: 0 1.5rem;
             }
+            
+            .mobile-menu {
+                padding: 2rem;
+            }
+            
+            .mobile-menu .nav-link {
+                font-size: 1.25rem;
+                padding: 0.75rem 0;
+            }
         }
         
         /* Touch Device Optimizations */
@@ -752,7 +826,22 @@
 
     <!-- Navigation Menu -->
     <nav class="sticky top-0 z-50 bg-black/80 backdrop-blur-md py-6 border-b border-art-deco-border">
-        <div class="container flex justify-center space-x-8 sm:space-x-16 text-sm sm:text-base">
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+            <span class="menu-icon">☰</span>
+        </button>
+        
+        <!-- Desktop Navigation -->
+        <div class="desktop-nav container flex justify-center space-x-8 sm:space-x-16 text-sm sm:text-base">
+            <a href="#about" class="nav-link" aria-label="About section">ABOUT</a>
+            <a href="#experience" class="nav-link" aria-label="Experience section">EXPERIENCE</a>
+            <a href="#portfolio-main" class="nav-link" aria-label="Portfolio section">PORTFOLIO</a>
+            <a href="#education" class="nav-link" aria-label="Education section">EDUCATION</a>
+            <a href="#contact" class="nav-link" aria-label="Contact section">CONTACT</a>
+        </div>
+        
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu">
             <a href="#about" class="nav-link" aria-label="About section">ABOUT</a>
             <a href="#experience" class="nav-link" aria-label="Experience section">EXPERIENCE</a>
             <a href="#portfolio-main" class="nav-link" aria-label="Portfolio section">PORTFOLIO</a>
@@ -1191,6 +1280,22 @@
         document.addEventListener('DOMContentLoaded', () => {
             const navLinks = document.querySelectorAll('.nav-link');
             const pageContents = document.querySelectorAll('.page-content');
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+
+            function toggleMobileMenu() {
+                mobileMenu.classList.toggle('active');
+                mobileMenuToggle.classList.toggle('active');
+                
+                // Prevent body scroll when menu is open
+                if (mobileMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            }
+
+            mobileMenuToggle.addEventListener('click', toggleMobileMenu);
 
             function showPage(pageId) {
                 pageContents.forEach(page => {
@@ -1209,6 +1314,11 @@
                         link.classList.add('active');
                     }
                 });
+                
+                // Close mobile menu when navigating
+                if (mobileMenu.classList.contains('active')) {
+                    toggleMobileMenu();
+                }
             }
 
             navLinks.forEach(link => {
@@ -1240,6 +1350,34 @@
                     });
                     detailsContainer.classList.toggle('active');
                 });
+            });
+
+            // Handle window resize for better responsive behavior
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    // Close mobile menu on resize to desktop
+                    if (window.innerWidth >= 768 && mobileMenu.classList.contains('active')) {
+                        toggleMobileMenu();
+                    }
+                }, 250);
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (mobileMenu.classList.contains('active') && 
+                    !mobileMenu.contains(e.target) && 
+                    !mobileMenuToggle.contains(e.target)) {
+                    toggleMobileMenu();
+                }
+            });
+
+            // Handle escape key to close mobile menu
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                    toggleMobileMenu();
+                }
             });
 
             const initialPageId = window.location.hash || '#about';
